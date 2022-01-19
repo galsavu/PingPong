@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UI.Output.Abstraction
+namespace UI.Input.Abstraction
 {
     public interface IInput
     {
