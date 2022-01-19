@@ -1,12 +1,15 @@
 ﻿using Server.Abstraction;
 using Common.DTOS;
+using System.Net.Sockets;
+using System.Net;
+
 namespace Server
 {
     public class PingPongServer : INetworkServer
     {
-        private AddressDTO _address;
-
-        public PingPongServer(AddressDTO address)
+        private IPEndPoint _address;
+        
+        public PingPongServer(IPEndPoint address)
         {
             _address = address;
         }
