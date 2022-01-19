@@ -19,10 +19,15 @@ namespace Server
 
         public void StartSocket()
         {     
-            
+            while (true)
+            {
+                Listener.Listen();
+                Listener.Accept();
+                Task.Run(() => Communicate());
+            }
         }
 
-        public void Communicate()
+        public async void Communicate()
         {
             throw new NotImplementedException();
         }
