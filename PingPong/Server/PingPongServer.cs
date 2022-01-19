@@ -1,14 +1,25 @@
 ﻿using Server.Abstraction;
 using Common.DTOS;
+using System.Net.Sockets;
+using System.Net;
+
 namespace Server
 {
     public class PingPongServer : INetworkServer
     {
-        private AddressDTO _address;
+        public IPEndPoint ipEndPoint { get; set; }
+        public Socket Listener { get; set; }
 
-        public PingPongServer(AddressDTO address)
+        public PingPongServer(IPAddress ipAddress, int port)
         {
-            _address = address;
+            ipEndPoint = new IPEndPoint(ipAddress, port);
+            Listener = new Socket(ipEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+            Listener.Bind(ipEndPoint);
+        }
+
+        public void StartSocket()
+        {     
+            
         }
 
         public void Communicate()
