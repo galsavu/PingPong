@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace UI.Output.Abstraction
 {
-    public  interface IOutput<T>
+    public  interface IOutput
     {
-        void Show(T obj);
+        void Show(object obj);
     }
 }
