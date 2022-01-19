@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace Server.Abstraction
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
