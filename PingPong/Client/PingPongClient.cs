@@ -27,15 +27,22 @@ namespace Client
 
         }
 
-        public void StartSocket()
+        public async Task StartSocket()
         {
             ClientSocket.Connect(ServerIpEndPoint);
+            await Task.Run(() => Communicate());
         }
 
-        public async void Communicate()
+        public void Communicate()
         {
+            byte[] buffer = new byte[1024];
             string inputText = Input.GetInput();
-            
+            byte[] textBytes = Encoding.ASCII.GetBytes(inputText);
+            ClientSocket.Send(textBytes);
+            Console.WriteLine("sent");
+            int byteReceived = ClientSocket.Receive(buffer);
+            string textReceived = Encoding.ASCII.GetString(buffer, 0, byteReceived);
+            Output.Show(textReceived);
         }
     }
 }
