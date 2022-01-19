@@ -7,9 +7,9 @@ using UI.Output.Abstraction;
 
 namespace UI.Output
 {
-    public class ConsoleOutput<T> : IOutput<T>
+    public class ConsoleOutput : IOutput
     {
-        public void Show(T obj)
+        public void Show(object obj)
         {
             Console.WriteLine(obj);
         }
