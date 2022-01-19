@@ -1,4 +1,4 @@
-﻿namespace Server 
+﻿namespace Server.Abstraction
 {
     public interface INetworkServer
     {

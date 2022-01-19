@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Server.Abstraction
+namespace Server
 {
     public class Program
     {
