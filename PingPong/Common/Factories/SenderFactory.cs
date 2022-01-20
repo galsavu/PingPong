@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Common.Abstraction;
+using Common.Send;
 
 namespace Common.Factories
 {
@@ -11,7 +12,11 @@ namespace Common.Factories
     {
         public ISender CreateSender(string senderType)
         {
-            throw new NotImplementedException();
+            if(senderType == "socket sender")
+            {
+                return new SocketSender();
+            }
+            return null;
         } 
     }
 }
