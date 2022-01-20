@@ -54,6 +54,7 @@ namespace Common.Starters
         {
             Console.WriteLine("waiting for connection");
             Socket clientSocket = Listener.Accept();
+            Console.WriteLine("accepted client");
             var communicator = _communicatorFactory.CreateCommunicators(_communicatorType, this, Output, Input, clientSocket);
             await Task.Run(() => communicator.communicate());
         }

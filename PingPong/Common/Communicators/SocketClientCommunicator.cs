@@ -27,6 +27,7 @@ namespace Common.Communicators
 
         public void communicate()
         {
+            _output.Show("enter text: ");
             var input = _input.GetInput();
             _sender.Send(_socket, input);
             object objectReceived = _receiver.Receive(_socket);

@@ -9,8 +9,8 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            var consoleOutput = new ConsoleOutput();
-            var consoleInput = new ConsoleInput();
+            var bootstrapper = new Bootstrapper();
+            bootstrapper.Run(args);
         }
     }
 }

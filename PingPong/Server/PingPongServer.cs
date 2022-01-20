@@ -21,6 +21,7 @@ namespace Server
 
         public void Start()
         {
+            Console.WriteLine("server starting");
             _communicateStarter.Start();
         }
 

@@ -35,6 +35,7 @@ namespace Common.Starters
             try
             {
                 ClientSocket.Connect(IpEndPoint);
+                Console.WriteLine($"connected to {IpEndPoint}");
                 var communicator = _communicatorFactory.CreateCommunicators(_communicatorType, this, Output, Input, ClientSocket);
                 communicator.communicate();
             }

@@ -8,8 +8,8 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            var consoleOutput = new ConsoleOutput();           
-
+            var bootstrapper = new Bootstrapper();
+            bootstrapper.Run(args);
         }
     }
 }
