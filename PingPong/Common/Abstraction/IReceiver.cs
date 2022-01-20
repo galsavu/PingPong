@@ -8,6 +8,6 @@ namespace Common.Abstraction
 {
     public interface IReceiver
     {
-        object Receive(IDisposable receiver);
+        T Receive<T>(IDisposable receiver);
     }
 }
