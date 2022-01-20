@@ -9,23 +9,21 @@ using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Common.Receiver
+namespace Common.Send
 {
-    public class TcpClientReceiver : IReceiver
+    public class TcpClientSender : ISender
     {
         private readonly IFormatter _formatter;
 
-        public TcpClientReceiver()
+        public TcpClientSender()
         {
             _formatter = new BinaryFormatter();
         }
-
-        public T Receive<T>(IDisposable receiver)
+        public void Send<T>(IDisposable sender, T message) where T : ISerializable
         {
-            TcpClient tcpClient = (TcpClient)receiver;
+            TcpClient tcpClient = (TcpClient)sender;
             NetworkStream strm = tcpClient.GetStream();
-            var objectReceived = (T)_formatter.Deserialize(strm);
-            return objectReceived;
+            _formatter.Serialize(strm, message);
         }
     }
 }
