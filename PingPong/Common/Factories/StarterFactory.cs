@@ -29,20 +29,23 @@ namespace Common.Factories
             IReceiver receiver = _receiverFactory.CreateReceiver(type);
             IOutput output = _outputFactory.CreateOutput(outputType);
             IInput input = _inputFactory.CreateInput(inputType);
-
+            IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
             if (type == "socket server")
             {
                 Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
-
                 return new SocketServerStarter(sender, receiver, listener, ipEndPoint, output, input, comunicatorsFactory, type);
             }
 
             else if (type == "socket client")
             {
                 Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
                 return new SocketClientStarter(sender, receiver, socket, ipEndPoint, output, input, comunicatorsFactory, type);
+            }
+
+            else if(type == "tcp client")
+            {
+                TcpClient tcpClient = new TcpClient();
+                return new TcpClientStarter(sender, receiver, tcpClient, ipEndPoint, output, input, comunicatorsFactory, type);
             }
 
             return null;
