@@ -25,6 +25,12 @@ namespace Common.Factories
                 SocketServerStarter socketServerStarter = (SocketServerStarter)starter ;
                 return new SocketServerCommunicator(socketServerStarter, output, input, socket);
             }
+            else if (communicatorType == "socket client")
+            {
+                var socket = (Socket)disposable;
+                SocketClientStarter socketClientStarter = (SocketClientStarter)starter ;
+                return new SocketClientCommunicator(socketClientStarter, output, input);
+            }
             return null;
         }
     }

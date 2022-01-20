@@ -16,11 +16,11 @@ namespace Common.Communicators
         private readonly IOutput _output;
         private readonly IInput _input;
 
-        public SocketClientCommunicator(SocketServerStarter socketServerStarter, IOutput output, IInput input)
+        public SocketClientCommunicator(SocketClientStarter socketClientStarter, IOutput output, IInput input)
         {
-            _sender = socketServerStarter.Sender;
-            _receiver = socketServerStarter.Receiver;
-            _socket = socketServerStarter.Listener;
+            _sender = socketClientStarter.Sender;
+            _receiver = socketClientStarter.Receiver;
+            _socket = socketClientStarter.ClientSocket;
             _output = output;
             _input = input;
         }
