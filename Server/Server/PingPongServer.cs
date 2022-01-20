@@ -7,17 +7,16 @@ namespace Server
 {
     public class PingPongServer : INetworkServer
     {
-        private IOutput _output;
+        private IOutput output;
         public IPEndPoint ipEndPoint { get; set; }
         public Socket Listener { get; set; }
 
-        public PingPongServer(string ipAddress, int port, IOutput output)
+        public PingPongServer(IPAddress ipAddress, int port, IOutput output)
         {
-            IPAddress ip = IPAddress.Parse(ipAddress);
-            ipEndPoint = new IPEndPoint(ip, port);
+            ipEndPoint = new IPEndPoint(ipAddress, port);
             Listener = new Socket(ipEndPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             Listener.Bind(ipEndPoint);
-            _output = output;
+            this.output = output;
         }
 
         public void StartSocket()
@@ -32,7 +31,11 @@ namespace Server
 
         public void Communicate()
         {
-            
+            byte[] buffer = new byte[1024];
+            int bytesRead = Listener.Receive(buffer);
+            string data = Encoding.ASCII.GetString(buffer, 0, bytesRead);
+            output.Show(data);
+            Listener.Send(Encoding.ASCII.GetBytes(data));
         }
     }
 }
