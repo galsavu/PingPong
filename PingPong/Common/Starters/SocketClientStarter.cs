@@ -9,7 +9,7 @@ namespace Common.Starters
 {
     public class SocketClientStarter : ICommunicateStarter
     {
-        private readonly ComunicatorsFactory _communicatorFactory;
+        private readonly CommunicatorsFactory _communicatorFactory;
         private readonly string _communicatorType;
         public ISender Sender { get; set; }
         public IReceiver Receiver { get; set; }
@@ -18,7 +18,7 @@ namespace Common.Starters
         public IOutput Output { get; }
         public IInput Input { get; }
 
-        public SocketClientStarter(ISender sender, IReceiver receiver, Socket clientSocket, IPEndPoint ipEndPoint, IOutput output, IInput input, ComunicatorsFactory communicatorFactory, string communicatorType)
+        public SocketClientStarter(ISender sender, IReceiver receiver, Socket clientSocket, IPEndPoint ipEndPoint, IOutput output, IInput input, CommunicatorsFactory communicatorFactory, string communicatorType)
         {
             Sender = sender;
             Receiver = receiver;
@@ -35,7 +35,7 @@ namespace Common.Starters
             try
             {
                 ClientSocket.Connect(IpEndPoint);
-                var communicator = _communicatorFactory.CreateComunicators(_communicatorType, this, Output, Input, ClientSocket);
+                var communicator = _communicatorFactory.CreateCommunicators(_communicatorType, this, Output, Input, ClientSocket);
                 communicator.communicate();
             }
             catch (Exception ex)

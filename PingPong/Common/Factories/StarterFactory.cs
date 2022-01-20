@@ -22,7 +22,7 @@ namespace Common.Factories
             _inputFactory = new InputFactory();
         }
 
-        public ICommunicateStarter CreateStarter(string type, string ip, int port, string outputType, string inputType, ComunicatorsFactory comunicatorsFactory)
+        public ICommunicateStarter CreateStarter(string type, string ip, int port, string outputType, string inputType, CommunicatorsFactory comunicatorsFactory)
         {
             IPAddress iPAddress = IPAddress.Parse(ip);
             ISender sender = _senderFactory.CreateSender(type);

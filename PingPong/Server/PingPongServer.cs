@@ -13,7 +13,7 @@ namespace Server
         private ICommunicateStarter _communicateStarter;
         private string _communicatorType;
         
-        public PingPongServer(string communicatorType, string ipAddress, int port, string outputType, string inputType, StarterFactory starterFactory, ComunicatorsFactory comunicatorsFactory)
+        public PingPongServer(string communicatorType, string ipAddress, int port, string outputType, string inputType, StarterFactory starterFactory, CommunicatorsFactory comunicatorsFactory)
         {            
             _communicatorType = communicatorType;
             _communicateStarter = starterFactory.CreateStarter(_communicatorType, ipAddress, port, outputType, inputType, comunicatorsFactory); 
