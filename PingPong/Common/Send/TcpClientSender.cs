@@ -19,7 +19,7 @@ namespace Common.Send
         {
             _formatter = new BinaryFormatter();
         }
-        public void Send<T>(IDisposable sender, T message) where T : ISerializable
+        public void Send(IDisposable sender, object message)
         {
             TcpClient tcpClient = (TcpClient)sender;
             NetworkStream strm = tcpClient.GetStream();

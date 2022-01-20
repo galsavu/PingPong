@@ -20,11 +20,11 @@ namespace Common.Receiver
             _formatter = new BinaryFormatter();
         }
 
-        public T Receive<T>(IDisposable receiver)
+        public object Receive(IDisposable receiver)
         {
             TcpClient tcpClient = (TcpClient)receiver;
             NetworkStream strm = tcpClient.GetStream();
-            var objectReceived = (T)_formatter.Deserialize(strm);
+            var objectReceived = _formatter.Deserialize(strm);
             return objectReceived;
         }
     }

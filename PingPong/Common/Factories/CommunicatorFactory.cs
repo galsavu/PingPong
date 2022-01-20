@@ -19,7 +19,8 @@ namespace Common.Factories
 
         public ICommunicator CreateCommunicators(string communicatorType, ICommunicateStarter starter, IOutput output, IInput input, IDisposable disposable)
         {
-            if (communicatorType.Contains("server"))
+            Console.WriteLine(communicatorType);
+            if (communicatorType.Contains("listener"))
             {
                 SocketServerStarter socketServerStarter = (SocketServerStarter)starter;
                 return new ServerCommunicator(socketServerStarter, output, input, disposable);

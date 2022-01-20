@@ -13,7 +13,7 @@ namespace Common.Send
     public class SocketSender : ISender
     {
 
-        public void Send<T>(IDisposable sender, T message) where T : ISerializable
+        public void Send(IDisposable sender, object message)
         {
             Socket socket = (Socket)sender;
             string messageStr = message as string;

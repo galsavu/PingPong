@@ -9,6 +9,6 @@ namespace Common.Abstraction
 {
     public interface ISender
     {
-        void Send<T>(IDisposable sender ,T message) where T : ISerializable;
+        void Send(IDisposable sender ,object message);
     }
 }
