@@ -26,7 +26,26 @@ namespace Common.Starters
 
         public void Start(Action communicate)
         {
-            throw new NotImplementedException();
+            Listener.Listen();
+            GetClientsConnections(communicate);   
+           
         }
+
+        public void GetClientsConnections(Action communicate)
+        {
+            while (true)
+            {
+                Task.Run(() => GetConnection(communicate));
+            }
+        }
+
+        public async Task GetConnection(Action communicate)
+        {
+            Console.WriteLine("waiting for connection");
+            Listener.Accept();
+            await Task.Run(() => communicate?.Invoke());
+        }
+
+        
     }
 }
