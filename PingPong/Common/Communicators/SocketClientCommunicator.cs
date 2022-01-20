@@ -27,7 +27,10 @@ namespace Common.Communicators
 
         public void communicate()
         {
-            throw new NotImplementedException();
+            var input = _input.GetInput();
+            _sender.Send(_listener, input);
+            object objectReceived = _receiver.Receive(_listener);
+            _output.Show(objectReceived);
         }
     }
 }
