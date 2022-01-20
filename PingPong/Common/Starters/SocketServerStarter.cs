@@ -24,7 +24,7 @@ namespace Common.Starters
             Listener = listener;
         }
 
-        public void Start()
+        public void Start(Action communicate)
         {
             throw new NotImplementedException();
         }

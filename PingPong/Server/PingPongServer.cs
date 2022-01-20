@@ -23,7 +23,7 @@ namespace Server
 
         public void Start()
         {
-            _communicateStarter.Start();
+            _communicateStarter.Start(Communicate);
         }
 
         public void Communicate()
