@@ -23,6 +23,11 @@ namespace Server
             _output = output;
         }
 
+        public void Start()
+        {
+            _communicateStarter.Start();
+        }
+
         public void Communicate()
         {
             _communicator.communicate();

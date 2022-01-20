@@ -8,6 +8,7 @@ using Common.Receiver.Abstraction;
 using Common.Send.Abstraction;
 using System.Net;
 using System.Net.Sockets;
+using Common.Starters;
 
 namespace Server.Communicators
 {
@@ -15,13 +16,13 @@ namespace Server.Communicators
     {
         private ISender _sender;
         private IReceiver _receiver;
-        public Socket Listener { get; set; }
+        private Socket _listener { get; set; }
 
-        public SocketCommunicator(ISender sender, IReceiver receiver, Socket listener)
+        public SocketCommunicator(SocketServerStarter socketServerStarter)
         {
-            _sender = sender;
-            _receiver = receiver;
-            Listener = listener;
+            _sender = socketServerStarter.Sender;
+            _receiver = socketServerStarter.Receiver;
+            _listener = socketServerStarter.Listener;
         }
 
         public void communicate()
