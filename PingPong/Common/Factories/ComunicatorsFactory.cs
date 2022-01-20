@@ -11,9 +11,9 @@ namespace Common.Factories
     {
 
 
-        public ICommunicator CreateComunicators(string communicatorType, string ip, int port)
+        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException(); //create communicator according to the starter type
         }
     }
 }
