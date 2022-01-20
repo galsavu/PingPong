@@ -22,7 +22,7 @@ namespace Common.Receiver
             Socket socket = receiver as Socket;
             int bytesReceived = socket.Receive(_buffer);
             var data = Encoding.ASCII.GetString(_buffer, 0, bytesReceived);
-            return (T)Convert.ChangeType(data, typeof(T)); ;
+            return (T)Convert.ChangeType(data, typeof(T));
         }
     }
 }
