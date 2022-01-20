@@ -9,7 +9,7 @@ using System.Net.Sockets;
 using Common.Starters;
 using UI.Output.Abstraction;
 
-namespace Server.Communicators
+namespace Common.Communicators
 {
     public class SocketServerCommunicator : ICommunicator
     {
