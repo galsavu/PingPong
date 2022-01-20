@@ -17,6 +17,10 @@ namespace Common.Factories
             {
                 return new SocketSender();
             }
+            else if (senderType.Contains("tcp"))
+            {
+                return new TcpClientSender();
+            }
             return null;
         } 
     }
