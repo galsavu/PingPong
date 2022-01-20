@@ -20,7 +20,7 @@ namespace Common.Factories
             _receiverFactory = new ReceiverFactory();
         }
 
-        public ICommunicateStarter CreateStarter(string type, string ip, int port, string outputType, string inputType)
+        public ICommunicateStarter CreateStarter(string type, string ip, int port, string outputType, string inputType, ComunicatorsFactory comunicatorsFactory)
         {
             IPAddress iPAddress = IPAddress.Parse(ip);
             ISender sender = _senderFactory.CreateSender(type);
@@ -33,14 +33,14 @@ namespace Common.Factories
                 Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
 
-                return new SocketServerStarter(sender, receiver, listener, ipEndPoint, output, input);
+                return new SocketServerStarter(sender, receiver, listener, ipEndPoint, output, input, comunicatorsFactory, type);
             }
 
             else if (type == "socket client")
             {
-                Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
-                return new SocketClientStarter(sender, receiver, listener, ipEndPoint, output, input);
+                return new SocketClientStarter(sender, receiver, socket, ipEndPoint, output, input, comunicatorsFactory, type);
             }
 
             return null;
