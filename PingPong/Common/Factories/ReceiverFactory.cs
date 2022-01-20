@@ -19,7 +19,7 @@ namespace Common.Factories
 
         public IReceiver CreateReceiver(string senderType)
         {
-            if (senderType == "socket sender")
+            if (senderType.Contains("socket"))
             {
                 return new SocketReceiver(_buffer);
             }
