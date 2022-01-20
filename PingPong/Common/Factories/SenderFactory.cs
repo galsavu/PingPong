@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Send.Abstraction
+namespace Common.Factories
 {
-    public interface ISender
+    internal class SenderFactory
     {
-        void Send(IDisposable sender ,object message);
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Receiver.Abstraction
+namespace Common.Abstraction
 {
     public interface IReceiver
     {
