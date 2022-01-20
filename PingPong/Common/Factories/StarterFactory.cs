@@ -11,7 +11,15 @@ using Common.Starters;
 namespace Common.Factories
 {
     public class StarterFactory
-    { 
+    {
+        private readonly SenderFactory _senderFactory;
+        private readonly ReceiverFactory _receiverFactory;
+
+        public StarterFactory()
+        {
+            _senderFactory = new SenderFactory();
+            _receiverFactory = new ReceiverFactory();
+        }
 
         public ICommunicateStarter CreateStarter(string type, string ip, int port)
         {
