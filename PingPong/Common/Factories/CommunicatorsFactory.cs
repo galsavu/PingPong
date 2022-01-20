@@ -14,10 +14,10 @@ using System.Net.Sockets;
 
 namespace Common.Factories
 {
-    public class ComunicatorsFactory
+    public class CommunicatorsFactory
     {
         
-        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter, IOutput output, IInput input, IDisposable disposable)
+        public ICommunicator CreateCommunicators(string communicatorType, ICommunicateStarter starter, IOutput output, IInput input, IDisposable disposable)
         {
             if(communicatorType == "socket server")
             {
