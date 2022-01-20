@@ -11,7 +11,6 @@ namespace Client
     public class PingPongClient : INetworkClient
     {
         private ICommunicateStarter _communicateStarter;
-        private ICommunicator _communicator;
         private string _communicatorType;
 
         public PingPongClient(string communicatorType, string ipAddress, int port, string outputType, string inputType, StarterFactory starterFactory, ComunicatorsFactory comunicatorsFactory)

@@ -8,6 +8,6 @@ namespace Common.Abstraction
 {
     public interface ICommunicateStarter
     {
-        void Start(Action communicate);
+        void Start();
     }
 }
