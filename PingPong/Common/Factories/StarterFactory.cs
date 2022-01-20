@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Common.Abstraction;
+﻿using Common.Abstraction;
+using Common.Starters;
 using System.Net;
 using System.Net.Sockets;
-using Common.Starters;
 
 namespace Common.Factories
 {
@@ -24,14 +19,24 @@ namespace Common.Factories
         public ICommunicateStarter CreateStarter(string type, string ip, int port)
         {
             IPAddress iPAddress = IPAddress.Parse(ip);
-            if(type == "socket server")
+            ISender sender = _senderFactory.CreateSender(type);
+            IReceiver receiver = _receiverFactory.CreateReceiver(type);
+
+            if (type == "socket server")
             {
                 Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
-                ISender sender = _senderFactory.CreateSender(type);
-                IReceiver receiver = _receiverFactory.CreateReceiver(type);
+
                 return new SocketServerStarter(sender, receiver, listener, ipEndPoint);
             }
+
+            else if (type == "socket client")
+            {
+                Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
+                return new SocketClientStarter(sender, receiver, listener, ipEndPoint);
+            }
+
             return null;
         }
     }

@@ -4,14 +4,14 @@ using System.Net.Sockets;
 
 namespace Common.Starters
 {
-    public class SockketClientStarter : ICommunicateStarter
+    public class SocketClientStarter : ICommunicateStarter
     {
         public ISender Sender { get; set; }
         public IReceiver Receiver { get; set; }
         public Socket ClientSocket { get; set; }
         public IPEndPoint IpEndPoint { get; }
 
-        public SockketClientStarter(ISender sender, IReceiver receiver, Socket clientSocket, IPEndPoint ipEndPoint)
+        public SocketClientStarter(ISender sender, IReceiver receiver, Socket clientSocket, IPEndPoint ipEndPoint)
         {
             Sender = sender;
             Receiver = receiver;
