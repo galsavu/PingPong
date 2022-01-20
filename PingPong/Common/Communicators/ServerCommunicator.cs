@@ -12,15 +12,15 @@ using UI.Input.Abstraction;
 
 namespace Common.Communicators
 {
-    public class SocketServerCommunicator : ICommunicator
+    public class ServerCommunicator : ICommunicator
     {
         private ISender _sender;
         private IReceiver _receiver;
-        private Socket _socket { get; set; }
+        private IDisposable _socket { get; set; }
         private readonly IOutput _output;
         private readonly IInput _input;
 
-        public SocketServerCommunicator(SocketServerStarter socketServerStarter, IOutput output, IInput input, Socket socket)
+        public ServerCommunicator(SocketServerStarter socketServerStarter, IOutput output, IInput input, IDisposable socket)
         {
             _sender = socketServerStarter.Sender;
             _receiver = socketServerStarter.Receiver;
