@@ -12,7 +12,7 @@ namespace Common.Factories
     {
         public ISender CreateSender(string senderType)
         {
-            if(senderType == "socket sender")
+            if(senderType.Contains("socket"))
             {
                 return new SocketSender();
             }
