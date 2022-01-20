@@ -10,17 +10,20 @@ using UI.Input;
 using UI.Output.Abstraction;
 using UI.Input.Abstraction;
 using Common.Starters;
+using System.Net.Sockets;
+
 namespace Common.Factories
 {
     public class ComunicatorsFactory
     {
         
-        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter, IOutput output, IInput input)
+        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter, IOutput output, IInput input, IDisposable disposable)
         {
             if(communicatorType == "socket server")
-            {             
+            {
+                var socket = (Socket)disposable;
                 SocketServerStarter socketServerStarter = (SocketServerStarter)starter ;
-                return new SocketServerCommunicator(socketServerStarter, output, input);
+                return new SocketServerCommunicator(socketServerStarter, output, input, socket);
             }
             return null;
         }

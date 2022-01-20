@@ -12,7 +12,7 @@ namespace Common.Communicators
     {
         private ISender _sender;
         private IReceiver _receiver;
-        private Socket _listener { get; set; }
+        private Socket _socket { get; set; }
         private readonly IOutput _output;
         private readonly IInput _input;
 
@@ -20,7 +20,7 @@ namespace Common.Communicators
         {
             _sender = socketServerStarter.Sender;
             _receiver = socketServerStarter.Receiver;
-            _listener = socketServerStarter.Listener;
+            _socket = socketServerStarter.Listener;
             _output = output;
             _input = input;
         }
@@ -28,8 +28,8 @@ namespace Common.Communicators
         public void communicate()
         {
             var input = _input.GetInput();
-            _sender.Send(_listener, input);
-            object objectReceived = _receiver.Receive(_listener);
+            _sender.Send(_socket, input);
+            object objectReceived = _receiver.Receive(_socket);
             _output.Show(objectReceived);
         }
     }

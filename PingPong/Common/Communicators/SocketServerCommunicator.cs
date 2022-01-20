@@ -16,7 +16,7 @@ namespace Common.Communicators
     {
         private ISender _sender;
         private IReceiver _receiver;
-        private Socket _listener { get; set; }
+        private Socket _socket { get; set; }
         private readonly IOutput _output;
         private readonly IInput _input;
 
@@ -24,14 +24,14 @@ namespace Common.Communicators
         {
             _sender = socketServerStarter.Sender;
             _receiver = socketServerStarter.Receiver;
-            _listener = socketServerStarter.Listener;
+            _socket = socketServerStarter.Listener;
             _output = output;
             _input = input;
         }
 
         public void communicate()
         {
-            _receiver.Receive(_listener);
+            _receiver.Receive(_socket);
 
         }
     }

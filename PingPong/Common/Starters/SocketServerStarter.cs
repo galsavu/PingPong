@@ -53,8 +53,8 @@ namespace Common.Starters
         public async Task GetConnection()
         {
             Console.WriteLine("waiting for connection");
-            Listener.Accept();
-            var communicator = _communicatorFactory.CreateComunicators(_communicatorType, this, Output, Input);
+            Socket clientSocket = Listener.Accept();
+            var communicator = _communicatorFactory.CreateComunicators(_communicatorType, this, Output, Input, clientSocket);
             await Task.Run(() => communicator.communicate());
         }
 
