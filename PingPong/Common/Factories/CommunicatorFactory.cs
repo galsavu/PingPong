@@ -21,13 +21,11 @@ namespace Common.Factories
         {
             if (communicatorType.Contains("server"))
             {
-                var socket = (Socket)disposable;
                 SocketServerStarter socketServerStarter = (SocketServerStarter)starter;
-                return new ServerCommunicator(socketServerStarter, output, input, socket);
+                return new ServerCommunicator(socketServerStarter, output, input, disposable);
             }
             else if (communicatorType.Contains("client"))
             {
-                var socket = (Socket)disposable;
                 SocketClientStarter socketClientStarter = (SocketClientStarter)starter;
                 return new ClientCommunicator(socketClientStarter, output, input);
             }
