@@ -17,12 +17,12 @@ namespace Common.Receiver
             _buffer = buffer;
         }
 
-        public object Receive(IDisposable receiver)
+        public T Receive<T>(IDisposable receiver)
         {
             Socket socket = receiver as Socket;
             int bytesReceived = socket.Receive(_buffer);
-            string data = Encoding.ASCII.GetString(_buffer, 0, bytesReceived);
-            return data;
+            var data = Encoding.ASCII.GetString(_buffer, 0, bytesReceived);
+            return (T)Convert.ChangeType(data, typeof(T)); ;
         }
     }
 }
