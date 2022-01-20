@@ -27,10 +27,10 @@ namespace Common.Factories
             if(type == "socket server")
             {
                 Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                listener.Bind(new IPEndPoint(iPAddress, port));
+                IPEndPoint ipEndPoint = new IPEndPoint(iPAddress, port);
                 ISender sender = _senderFactory.CreateSender(type);
                 IReceiver receiver = _receiverFactory.CreateReceiver(type);
-                return new SocketServerStarter(sender, receiver, listener);
+                return new SocketServerStarter(sender, receiver, listener, ipEndPoint);
             }
             return null;
         }
