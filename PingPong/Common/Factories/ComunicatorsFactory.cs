@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Server.Abstraction;
+using Common.Abstraction;
 
-namespace Server.Factories
+namespace Common.Factories
 {
     public class ComunicatorsFactory
     {
