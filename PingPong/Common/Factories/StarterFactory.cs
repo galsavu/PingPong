@@ -18,6 +18,8 @@ namespace Common.Factories
         {
             _senderFactory = new SenderFactory();
             _receiverFactory = new ReceiverFactory();
+            _outputFactory = new OutputFactory();
+            _inputFactory = new InputFactory();
         }
 
         public ICommunicateStarter CreateStarter(string type, string ip, int port, string outputType, string inputType, ComunicatorsFactory comunicatorsFactory)
