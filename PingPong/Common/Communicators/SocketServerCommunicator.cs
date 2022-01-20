@@ -20,19 +20,20 @@ namespace Common.Communicators
         private readonly IOutput _output;
         private readonly IInput _input;
 
-        public SocketServerCommunicator(SocketServerStarter socketServerStarter, IOutput output, IInput input)
+        public SocketServerCommunicator(SocketServerStarter socketServerStarter, IOutput output, IInput input, Socket socket)
         {
             _sender = socketServerStarter.Sender;
             _receiver = socketServerStarter.Receiver;
-            _socket = socketServerStarter.Listener;
             _output = output;
             _input = input;
+            _socket = socket;
         }
 
         public void communicate()
         {
-            _receiver.Receive(_socket);
-
+            object receivedObject = _receiver.Receive(_socket);
+            _output.Show(receivedObject);
+            _sender.Send(_socket, receivedObject);
         }
     }
 }
