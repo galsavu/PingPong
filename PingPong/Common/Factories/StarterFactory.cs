@@ -11,7 +11,8 @@ using Common.Starters;
 namespace Common.Factories
 {
     public class StarterFactory
-    {
+    { 
+
         public ICommunicateStarter CreateStarter(string type, string ip, int port)
         {
             throw new NotImplementedException();
