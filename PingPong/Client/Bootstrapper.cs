@@ -12,10 +12,10 @@ namespace Client
     {
         public void Run(string[] args)
         {
-            string communicatorType = "socket client";
-            string ipAddress = args[0];
-            int port;
-            int.TryParse(args[1], out port);
+            string communicatorType = "tcp client";
+            string ipAddress = "127.0.0.1"; //args[0];
+            int port = 2345;
+            //int.TryParse(args[1], out port);
             string outputType = "console";
             string inputType = "console";
             var starterFactory = new StarterFactory();
