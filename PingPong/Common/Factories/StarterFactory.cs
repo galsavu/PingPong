@@ -23,7 +23,16 @@ namespace Common.Factories
 
         public ICommunicateStarter CreateStarter(string type, string ip, int port)
         {
-            throw new NotImplementedException();
+            IPAddress iPAddress = IPAddress.Parse(ip);
+            if(type == "socket server")
+            {
+                Socket listener = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                listener.Bind(new IPEndPoint(iPAddress, port));
+                ISender sender = _senderFactory.CreateSender(type);
+                IReceiver receiver = _receiverFactory.CreateReceiver(type);
+                return new SocketServerStarter(sender, receiver, listener);
+            }
+            return null;
         }
     }
 }
