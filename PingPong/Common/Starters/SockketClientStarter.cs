@@ -21,7 +21,16 @@ namespace Common.Starters
 
         public void Start(Action communicate)
         {
-            throw new NotImplementedException();
+            try
+            {
+                ClientSocket.Connect(IpEndPoint);
+                communicate?.Invoke();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
     }
 }
