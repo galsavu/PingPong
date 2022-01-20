@@ -19,7 +19,7 @@ namespace Common.Starters
             IpEndPoint = ipEndPoint;
         }
 
-        public void Start(Action communicate)
+        public void Start()
         {
             try
             {

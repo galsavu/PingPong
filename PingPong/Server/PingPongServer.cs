@@ -23,12 +23,9 @@ namespace Server
 
         public void Start()
         {
-            _communicateStarter.Start(Communicate);
+            _communicateStarter.Start();
         }
 
-        public void Communicate()
-        {
-            _communicator.communicate();
-        }
+        
     }
 }

@@ -24,7 +24,7 @@ namespace Common.Starters
             IpEndPoint = ipEndPoint;
         }
 
-        public void Start(Action communicate)
+        public void Start()
         {
             Listener.Bind(IpEndPoint);
             Listener.Listen();

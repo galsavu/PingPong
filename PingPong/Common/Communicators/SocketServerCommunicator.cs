@@ -31,7 +31,8 @@ namespace Common.Communicators
 
         public void communicate()
         {
-            throw new NotImplementedException();
+            _receiver.Receive(_listener);
+
         }
     }
 }
