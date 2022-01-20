@@ -2,7 +2,7 @@
 {
     public interface INetworkClient
     {
-        void StartSocket();
+        void Start();
         void Communicate();
     }
 }
