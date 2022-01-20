@@ -9,20 +9,23 @@ using Common.Send.Abstraction;
 using System.Net;
 using System.Net.Sockets;
 using Common.Starters;
+using UI.Output.Abstraction;
 
 namespace Server.Communicators
 {
-    public class SocketCommunicator : ICommunicator
+    public class SocketServerCommunicator : ICommunicator
     {
         private ISender _sender;
         private IReceiver _receiver;
         private Socket _listener { get; set; }
+        private readonly IOutput _output;
 
-        public SocketCommunicator(SocketServerStarter socketServerStarter)
+        public SocketServerCommunicator(SocketServerStarter socketServerStarter, IOutput output)
         {
             _sender = socketServerStarter.Sender;
             _receiver = socketServerStarter.Receiver;
             _listener = socketServerStarter.Listener;
+            _output = output;
         }
 
         public void communicate()

@@ -10,17 +10,15 @@ namespace Server
 {
     public class PingPongServer : INetworkServer
     {
-        private IOutput _output;
         private ICommunicateStarter _communicateStarter;
         private ICommunicator _communicator;
         private string _communicatorType;
         
-        public PingPongServer(string communicatorType, string ipAddress, int port, IOutput output, StarterFactory starterFactory, ComunicatorsFactory comunicatorsFactory)
+        public PingPongServer(string communicatorType, string ipAddress, int port, string outputType, StarterFactory starterFactory, ComunicatorsFactory comunicatorsFactory)
         {            
             _communicatorType = communicatorType;
             _communicateStarter = starterFactory.CreateStarter(_communicatorType, ipAddress, port); 
-            _communicator = comunicatorsFactory.CreateComunicators(_communicatorType, _communicateStarter);
-            _output = output;
+            _communicator = comunicatorsFactory.CreateComunicators(_communicatorType, _communicateStarter, outputType);
         }
 
         public void Start()

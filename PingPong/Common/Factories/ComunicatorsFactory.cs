@@ -11,7 +11,7 @@ namespace Common.Factories
     {
 
 
-        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter)
+        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter, string outputType)
         {
             throw new NotImplementedException(); //create communicator according to the starter type
         }
