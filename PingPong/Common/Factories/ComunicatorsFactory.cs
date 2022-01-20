@@ -14,21 +14,11 @@ namespace Common.Factories
 {
     public class ComunicatorsFactory
     {
-        private readonly OutputFactory _outputFactory;
-        private readonly InputFactory _inputFactory;
-
-        public ComunicatorsFactory()
-        {
-            _outputFactory = new OutputFactory();
-            _inputFactory = new InputFactory();
-        }
-
-        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter, string outputType, string inputType)
+        
+        public ICommunicator CreateComunicators(string communicatorType, ICommunicateStarter starter, IOutput output, IInput input)
         {
             if(communicatorType == "socket server")
-            {
-                IOutput output = _outputFactory.CreateOutput(outputType);
-                IInput input = _inputFactory.CreateInput(inputType);
+            {             
                 SocketServerStarter socketServerStarter = (SocketServerStarter)starter ;
                 return new SocketServerCommunicator(socketServerStarter, output, input);
             }
