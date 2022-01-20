@@ -15,7 +15,7 @@ namespace Common.Send
         public void Send(IDisposable sender, object message)
         {
             Socket socket = sender as Socket;
-            string messageStr = message.ToString();
+            string messageStr = message as string;
             socket.Send(Encoding.ASCII.GetBytes(messageStr));
         }
     }
