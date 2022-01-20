@@ -23,6 +23,10 @@ namespace Common.Factories
             {
                 return new SocketReceiver(_buffer);
             }
+            else if (senderType.Contains("tcp"))
+            {
+                return new TcpClientReceiver();
+            }
             return null;
         }
     }

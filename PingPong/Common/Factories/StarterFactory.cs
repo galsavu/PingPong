@@ -47,7 +47,7 @@ namespace Common.Factories
                 TcpClient tcpClient = new TcpClient();
                 return new TcpClientStarter(sender, receiver, tcpClient, ipEndPoint, output, input, comunicatorsFactory, type);
             }
-            else if(type == "tcp server")
+            else if(type == "tcp listener")
             {
                 TcpListener tcpListener = new TcpListener(iPAddress, port);
                 return new TcpServerStarter(sender, receiver, tcpListener, output, input, comunicatorsFactory, type);
