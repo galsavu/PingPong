@@ -9,7 +9,7 @@ namespace Common.Starters
 {
     public class TcpClientStarter : ICommunicateStarter
     {
-
+        
         private readonly CommunicatorsFactory _communicatorFactory;
         private readonly string _communicatorType;
         public ISender Sender { get; set; }
@@ -33,7 +33,18 @@ namespace Common.Starters
 
         public void Start()
         {
-            throw new NotImplementedException();
+            try
+            {
+                ClientSocket.Connect(IpEndPoint);
+                Console.WriteLine($"connected to {IpEndPoint}");
+                var communicator = _communicatorFactory.CreateCommunicators(_communicatorType, this, Output, Input, ClientSocket);
+                communicator.communicate();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
     }
 }

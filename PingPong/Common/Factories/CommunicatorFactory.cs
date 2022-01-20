@@ -16,20 +16,20 @@ namespace Common.Factories
 {
     public class CommunicatorsFactory
     {
-        
+
         public ICommunicator CreateCommunicators(string communicatorType, ICommunicateStarter starter, IOutput output, IInput input, IDisposable disposable)
         {
-            if(communicatorType == "socket server")
+            if (communicatorType.Contains("server"))
             {
                 var socket = (Socket)disposable;
-                SocketServerStarter socketServerStarter = (SocketServerStarter)starter ;
-                return new SocketServerCommunicator(socketServerStarter, output, input, socket);
+                SocketServerStarter socketServerStarter = (SocketServerStarter)starter;
+                return new ServerCommunicator(socketServerStarter, output, input, socket);
             }
-            else if (communicatorType == "socket client")
+            else if (communicatorType.Contains("client"))
             {
                 var socket = (Socket)disposable;
-                SocketClientStarter socketClientStarter = (SocketClientStarter)starter ;
-                return new SocketClientCommunicator(socketClientStarter, output, input);
+                SocketClientStarter socketClientStarter = (SocketClientStarter)starter;
+                return new ClientCommunicator(socketClientStarter, output, input);
             }
             return null;
         }
